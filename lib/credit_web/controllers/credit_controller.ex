@@ -3,6 +3,8 @@ defmodule CreditWeb.CreditController do
 
   alias Credit.Credit
 
+  action_fallback CreditWeb.FallbackController
+
   @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do
 

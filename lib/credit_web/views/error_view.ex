@@ -13,4 +13,16 @@ defmodule CreditWeb.ErrorView do
   def template_not_found(template, _assigns) do
     Phoenix.Controller.status_message_from_template(template)
   end
+
+  def render("404.json", _assigns) do
+    %{errors: %{status: "404", detail: "Not Found"}}
+  end
+
+  def render("422.json", %{changeset: changeset}) do
+    %{errors: %{status: "422", detail: "Unprocessable Entity", reason: translate_errors(changeset)}}
+  end
+
+  def translate_errors(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+  end
 end
