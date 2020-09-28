@@ -20,9 +20,11 @@ defmodule CreditWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", CreditWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", CreditWeb do
+    pipe_through :api
+
+    resources "/credit", CreditController, only: [:index, :show, :create]
+  end
 
   # Enables LiveDashboard only for development
   #
