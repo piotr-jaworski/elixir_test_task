@@ -21,11 +21,14 @@ http://localhost:4000/api/credit/:id
 
 ## Add new credit
 return 422 because of bad Data
+
 curl -H "Content-Type: application/json" -X POST \
 -d '{"credit":{"amount": "100000", "avg_income": "2000.0", "interest": "0.04", "period": "10", "avg_expenses": "1000"}}' \
 http://localhost:4000/api/credit
 
+
 create new and return it with 201
+
 curl -H "Content-Type: application/json" -X POST \
 -d '{"credit":{"amount": "100000", "avg_income": "20000.0", "interest": "0.04", "period": "10", "avg_expenses": "1000"}}' \
 http://localhost:4000/api/credit
